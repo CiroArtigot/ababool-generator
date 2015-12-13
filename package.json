@@ -1,7 +1,7 @@
 {
   "name": "ababool-generator",
   "description": "Ababool application generator",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Ciro Artigot <ciro.artigot@gmail.com>",
   "contributors": [
     "someone <ciro.artigot@gmail.com>",
@@ -11,7 +11,7 @@
     "ababool",
     "ababoolgenerator"
   ],
-  "repository": "ciroartigot/generator",
+  "repository": "ciroartigot/ababool-generator",
   "license": "MIT",
   "dependencies": {
     "commander": "2.7.1",
