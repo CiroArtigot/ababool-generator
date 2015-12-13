@@ -21,7 +21,7 @@
   "main": "bin/express",
   "preferGlobal": true,
   "bin": {
-    "express": "./bin/express"
+    "ababool": "./bin/ababool"
   },
   "devDependencies": {
     "mocha": "2.2.5",
