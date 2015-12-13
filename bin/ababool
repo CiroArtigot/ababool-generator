@@ -107,7 +107,7 @@ function createApplication(app_name, path) {
   var sass = loadTemplate('css/style.sass');
 
   var ababooljson = loadTemplate('ababool/ababool.json');
-  var gulpfile = loadTemplate('ababool/gulfile.js');
+  var gulpfile = loadTemplate('ababool/gulpfile.js');
 
   mkdir(path, function(){
     mkdir(path + '/public');
