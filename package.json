@@ -1,7 +1,7 @@
 {
   "name": "ababool-generator",
   "description": "Ababool application generator",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "author": "Ciro Artigot <ciro.artigot@gmail.com>",
   "contributors": [
     "someone <ciro.artigot@gmail.com>",

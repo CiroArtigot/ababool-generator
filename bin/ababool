@@ -118,10 +118,10 @@ function createApplication(app_name, path) {
     });
 
     mkdir(path + '/public/images', function(){
-      copy_template('/public/images/ajax-loader.gif', path + '/images/ajax-loader.gif');
-      copy_template('/public/images/ababool01.jpg', path + '/images/ababool01.jpg');
-      copy_template('/public/images/ababool02.jpg', path + '/images/ababool02.jpg');
-      copy_template('/public/images/ababool03.jpg', path + '/images/ababool03.jpg');
+      copy_template('/images/ajax-loader.gif', path + '/public/images/ajax-loader.gif');
+      copy_template('/images/ababool01.jpg', path + '/public/images/ababool01.jpg');
+      copy_template('/images/ababool02.jpg', path + '/public/images/ababool02.jpg');
+      copy_template('/images/ababool03.jpg', path + '/public/images/ababool03.jpg');
       complete();
     });
 
@@ -137,11 +137,11 @@ function createApplication(app_name, path) {
     });
 
     mkdir(path + '/public/stylesheets/fonts', function(){
-      copy_template('/public/stylesheets/fonts/glyphicons-halflings-regular.eot', path + '/fonts/glyphicons-halflings-regular.eot');
-      copy_template('/public/stylesheets/fonts/glyphicons-halflings-regular.svg', path + '/fonts/glyphicons-halflings-regular.svg');
-      copy_template('/public/stylesheets/fonts/glyphicons-halflings-regular.ttf', path + '/fonts/glyphicons-halflings-regular.ttf');
-      copy_template('/public/stylesheets/fonts/glyphicons-halflings-regular.woff', path + '/fonts/glyphicons-halflings-regular.woff');
-      copy_template('/public/stylesheets/fonts/glyphicons-halflings-regular.woff2', path + '/fonts/glyphicons-halflings-regular.woff2');
+      copy_template('fonts/glyphicons-halflings-regular.eot', path + '/public/stylesheets/fonts/glyphicons-halflings-regular.eot');
+      copy_template('/fonts/glyphicons-halflings-regular.svg', path + '/public/stylesheets/fonts/glyphicons-halflings-regular.svg');
+      copy_template('/fonts/glyphicons-halflings-regular.ttf', path + '/public/stylesheets/fonts/glyphicons-halflings-regular.ttf');
+      copy_template('/fonts/glyphicons-halflings-regular.woff', path + '/public/stylesheets/fonts/glyphicons-halflings-regular.woff');
+      copy_template('/fonts/glyphicons-halflings-regular.woff2', path + '/public/stylesheets/fonts/glyphicons-halflings-regular.woff2');
       complete();
     });
 
