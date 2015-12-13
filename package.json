@@ -18,7 +18,7 @@
     "mkdirp": "0.5.1",
     "sorted-object": "1.0.0"
   },
-  "main": "bin/express",
+  "main": "bin/ababool",
   "preferGlobal": true,
   "bin": {
     "ababool": "./bin/ababool"
