@@ -27,9 +27,6 @@ before(program, 'outputHelp', function () {
 program
   .version(version)
   .usage('[options] [dir]')
-  .option('-e, --ejs', 'add ejs engine support (defaults to jade)')
-  .option('    --hbs', 'add handlebars engine support')
-  .option('-H, --hogan', 'add hogan.js engine support')
   .option('-c, --css <engine>', 'add stylesheet <engine> support (less|stylus|compass|sass) (defaults to plain css)')
   .option('    --git', 'add .gitignore')
   .option('-f, --force', 'force on non-empty directory')
@@ -102,79 +99,74 @@ function createApplication(app_name, path) {
   var www = loadTemplate('js/www');
   var index = loadTemplate('js/routes/index.js');
   var users = loadTemplate('js/routes/users.js');
+  var ajax = loadTemplate('js/routes/ajax.js');
+  var ababooljs = loadTemplate('js/ababool.js');
 
   // CSS
-  var css = loadTemplate('css/style.css');
-  var less = loadTemplate('css/style.less');
-  var stylus = loadTemplate('css/style.styl');
-  var compass = loadTemplate('css/style.scss');
+  var css = loadTemplate('css/ababool.css');
   var sass = loadTemplate('css/style.sass');
+
+  var ababooljson = loadTemplate('ababool/ababool.json');
+  var gulpfile = loadTemplate('ababool/gulfile.js');
 
   mkdir(path, function(){
     mkdir(path + '/public');
-    mkdir(path + '/public/javascripts');
-    mkdir(path + '/public/images');
+
+    mkdir(path + '/public/javascripts', function(){
+      write(path + '/public/javascripts/ababool.js', ababooljs );
+      complete();
+    });
+
+    mkdir(path + '/public/images', function(){
+      copy_template('/public/images/ajax-loader.gif', path + '/images/ajax-loader.gif');
+      copy_template('/public/images/ababool01.jpg', path + '/images/ababool01.jpg');
+      copy_template('/public/images/ababool02.jpg', path + '/images/ababool02.jpg');
+      copy_template('/public/images/ababool03.jpg', path + '/images/ababool03.jpg');
+      complete();
+    });
+
     mkdir(path + '/public/stylesheets', function(){
       switch (program.css) {
-        case 'less':
-          write(path + '/public/stylesheets/style.less', less);
-          break;
-        case 'stylus':
-          write(path + '/public/stylesheets/style.styl', stylus);
-          break;
-        case 'compass':
-          write(path + '/public/stylesheets/style.scss', compass);
-          break;
         case 'sass':
-          write(path + '/public/stylesheets/style.sass', sass);
+          write(path + '/public/stylesheets/ababool.sass', sass);
           break;
         default:
-          write(path + '/public/stylesheets/style.css', css);
+          write(path + '/public/stylesheets/ababool.css', css);
       }
+      complete();
+    });
+
+    mkdir(path + '/public/stylesheets/fonts', function(){
+      copy_template('/public/stylesheets/fonts/glyphicons-halflings-regular.eot', path + '/fonts/glyphicons-halflings-regular.eot');
+      copy_template('/public/stylesheets/fonts/glyphicons-halflings-regular.svg', path + '/fonts/glyphicons-halflings-regular.svg');
+      copy_template('/public/stylesheets/fonts/glyphicons-halflings-regular.ttf', path + '/fonts/glyphicons-halflings-regular.ttf');
+      copy_template('/public/stylesheets/fonts/glyphicons-halflings-regular.woff', path + '/fonts/glyphicons-halflings-regular.woff');
+      copy_template('/public/stylesheets/fonts/glyphicons-halflings-regular.woff2', path + '/fonts/glyphicons-halflings-regular.woff2');
       complete();
     });
 
     mkdir(path + '/routes', function(){
       write(path + '/routes/index.js', index);
+      write(path + '/routes/ajax.js', ajax);
       write(path + '/routes/users.js', users);
       complete();
     });
 
     mkdir(path + '/views', function(){
-      switch (program.template) {
-        case 'ejs':
-          copy_template('ejs/index.ejs', path + '/views/index.ejs');
-          copy_template('ejs/error.ejs', path + '/views/error.ejs');
-          break;
-        case 'jade':
-          copy_template('jade/index.jade', path + '/views/index.jade');
-          copy_template('jade/layout.jade', path + '/views/layout.jade');
-          copy_template('jade/error.jade', path + '/views/error.jade');
-          break;
-        case 'hjs':
-          copy_template('hogan/index.hjs', path + '/views/index.hjs');
-          copy_template('hogan/error.hjs', path + '/views/error.hjs');
-          break;
-        case 'hbs':
-          copy_template('hbs/index.hbs', path + '/views/index.hbs');
-          copy_template('hbs/layout.hbs', path + '/views/layout.hbs');
-          copy_template('hbs/error.hbs', path + '/views/error.hbs');
-          break;
-      }
+      copy_template('jade/index.jade', path + '/views/index.jade');
+      copy_template('jade/layout.jade', path + '/views/layout.jade');
+      copy_template('jade/error.jade', path + '/views/error.jade');
+      copy_template('jade/ajax.jade', path + '/views/ajax.jade');
+      complete();
+    });
+
+    mkdir(path + '/views/pages', function(){
+      copy_template('jade/pages/contents.jade', path + '/views/pages/contents.jade');
       complete();
     });
 
     // CSS Engine support
     switch (program.css) {
-      case 'less':
-        app = app.replace('{css}', eol + 'app.use(require(\'less-middleware\')(path.join(__dirname, \'public\')));');
-        break;
-      case 'stylus':
-        app = app.replace('{css}', eol + 'app.use(require(\'stylus\').middleware(path.join(__dirname, \'public\')));');
-        break;
-      case 'compass':
-        app = app.replace('{css}', eol + 'app.use(require(\'node-compass\')({mode: \'expanded\'}));');
-        break;
       case 'sass':
         app = app.replace('{css}', eol + 'app.use(require(\'node-sass-middleware\')({\n  src: path.join(__dirname, \'public\'),\n  dest: path.join(__dirname, \'public\'),\n  indentedSyntax: true,\n  sourceMap: true\n}));');
         break;
@@ -190,7 +182,10 @@ function createApplication(app_name, path) {
         name: app_name
       , version: '0.0.0'
       , private: true
-      , scripts: { start: 'node ./bin/www', 'postinstall':'bower install' }
+      , scripts: {
+        start: 'node ./bin/www',
+        'postinstall':'bower install angular & bower install angular-animate & bower install bootstrap'
+       }
       , dependencies: {
           'express': '~4.13.1',
           'body-parser': '~1.13.2',
@@ -246,6 +241,9 @@ function createApplication(app_name, path) {
     // write files
     write(path + '/package.json', JSON.stringify(pkg, null, 2));
     write(path + '/app.js', app);
+    write(path + '/ababool.json', ababooljson);
+    write(path + '/gulpfile.js', gulpfile);
+
     mkdir(path + '/bin', function(){
       www = www.replace('{name}', app_name);
       write(path + '/bin/www', www, 0755);
