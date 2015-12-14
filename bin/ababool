@@ -265,7 +265,7 @@ function copy_template(from, to) {
 
 function copy_template_file(from, to) {
   from = path.join(__dirname, '..', 'templates', from);
-  fs.writeFileSync(to, from);
+  write(to, fs.readFileSync(from));
 }
 
 
