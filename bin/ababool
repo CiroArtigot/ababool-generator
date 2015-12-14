@@ -140,7 +140,7 @@ function createApplication(app_name, path) {
       complete();
     });
 
-    mkdir(path + '/public/stylesheets/fonts', function(){
+    mkdir(path + '/public/fonts', function(){
       copy_template_file('/fonts/glyphicons-halflings-regular.eot', path + '/public/fonts/glyphicons-halflings-regular.eot');
       copy_template_file('/fonts/glyphicons-halflings-regular.svg', path + '/public/fonts/glyphicons-halflings-regular.svg');
       copy_template_file('/fonts/glyphicons-halflings-regular.ttf', path + '/public/fonts/glyphicons-halflings-regular.ttf');
