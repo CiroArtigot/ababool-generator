@@ -1,0 +1,54 @@
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #fff;
+    z-index: 9999;
+    background-image: url("../images/ajax-loader.gif");
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+body,
+html {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+}
+body {
+    overflow: auto;
+}
+.pt-perspective {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.pt-page {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    visibility: visible;
+    margin-top: 0;
+    margin-bottom: 0;
+    overflow: hidden;
+    overflow-y: auto;
+    display: block;
+    z-index: 1;
+}
+
+.pt-currentout {
+    z-index: 9998;
+}
+
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+.clearfix:after {
+    clear: both;
+}
