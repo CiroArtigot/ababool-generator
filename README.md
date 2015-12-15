@@ -24,6 +24,12 @@ Install dependencies:
 $ npm install
 ```
 
+Concatenate CSS and JS with Gulp:
+
+```bash
+$ gulp concatenar
+```
+
 Rock and Roll
 
 ```bash
