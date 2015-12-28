@@ -6,46 +6,54 @@
           "id" : "home",
           "default" : 1,
           "title" : "Ababool the JS Full Stack SPA",
+          "menutitle": "Home",
           "description": "this is the description of home",
-          "path": "pages/home.html",
-          "background-image" : "ababool01.jpg",
           "left" :"why",
           "right":"what",
-          "up" : "ajax1"
+          "up" : "ajax1",
+          "mainmenu" :1
       },
 
       "what" : {
           "id" : "what",
           "title" : "What Ababool the JS Full Stack SPA",
+          "menutitle": "What",
           "description": "this is the description of what",
-          "path": "pages/what.html",
-          "background-image" : "ababool02.jpg",
           "left" :"home",
           "right":"why",
           "up":"home",
-          "down": "why"
+          "down": "why",
+          "mainmenu" :1,
+          "footer":1
       },
 
       "why" : {
           "id" : "why",
           "title" : "Why Ababool the JS Full Stack SPA",
+          "menutitle": "Why",
           "description": "this is the description of why",
-          "path": "pages/why.html",
-          "background-image" : "ababool03.jpg",
           "left" :"what",
-          "right":"home"
+          "right":"home",
+          "mainmenu" :1,
+          "footer":1
       },
 
       "ajax1" : {
           "id" : "ajax1",
           "title" : "aaaaaaaaaaaajax1",
+          "menutitle": "Ajax1",
           "description": "this is the description of why",
-          "path": "pages/why.html",
-          "background-image" : "ababool04.jpg",
           "down" : "home",
-          "ajax" : 1
+          "ajax" : 1,
+          "reload" : 1,
+          "mainmenu" :1,
+          "footer":1
+      },
 
+      "mainmenu" : {
+          "id" : "mainmenu"
       }
+
 
   }
 }

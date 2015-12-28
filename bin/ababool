@@ -4,6 +4,7 @@ var program = require('commander');
 var mkdirp = require('mkdirp');
 var os = require('os');
 var fs = require('fs');
+var fse = require('fs-extra');
 var path = require('path');
 var readline = require('readline');
 var sortedObject = require('sorted-object');
@@ -27,9 +28,9 @@ before(program, 'outputHelp', function () {
 program
   .version(version)
   .usage('[options] [dir]')
-  .option('-c, --css <engine>', 'add stylesheet <engine> support (less|stylus|compass|sass) (defaults to plain css)')
-  .option('    --git', 'add .gitignore')
-  .option('-f, --force', 'force on non-empty directory')
+  //.option('-c, --css <engine>', 'add stylesheet <engine> support (less|stylus|compass|sass) (defaults to plain css)')
+  //.option('    --git', 'add .gitignore')
+  //.option('-f, --force', 'force on non-empty directory')
   .parse(process.argv);
 
 if (!exit.exited) {
@@ -111,75 +112,19 @@ function createApplication(app_name, path) {
   var ababooljson = loadTemplate('ababool/ababool.json');
   var gulpfile = loadTemplate('ababool/gulpfile.js');
 
-  mkdir(path, function(){
-    mkdir(path + '/public');
 
-    mkdir(path + '/public/javascripts', function(){
-      write(path + '/public/javascripts/ababool.js', ababooljs );
-      complete();
-    });
 
-    mkdir(path + '/public/images', function(){
-      copy_template_file('/images/ajax-loader.gif', path + '/public/images/ajax-loader.gif');
-      copy_template_file('/images/ababool01.jpg', path + '/public/images/ababool01.jpg');
-      copy_template_file('/images/ababool02.jpg', path + '/public/images/ababool02.jpg');
-      copy_template_file('/images/ababool03.jpg', path + '/public/images/ababool03.jpg');
-      complete();
-    });
 
-    mkdir(path + '/public/stylesheets', function(){
-      switch (program.css) {
-        case 'sass':
-          write(path + '/public/stylesheets/ababool.sass', sass);
-          break;
-        default:
-          write(path + '/public/stylesheets/system.css', css_system);
-          write(path + '/public/stylesheets/theme.css', css_theme);
-          write(path + '/public/stylesheets/transitions.css', css_transitions);
-      }
-      complete();
-    });
-
-    mkdir(path + '/public/fonts', function(){
-      copy_template_file('/fonts/glyphicons-halflings-regular.eot', path + '/public/fonts/glyphicons-halflings-regular.eot');
-      copy_template_file('/fonts/glyphicons-halflings-regular.svg', path + '/public/fonts/glyphicons-halflings-regular.svg');
-      copy_template_file('/fonts/glyphicons-halflings-regular.ttf', path + '/public/fonts/glyphicons-halflings-regular.ttf');
-      copy_template_file('/fonts/glyphicons-halflings-regular.woff', path + '/public/fonts/glyphicons-halflings-regular.woff');
-      copy_template_file('/fonts/glyphicons-halflings-regular.woff2', path + '/public/fonts/glyphicons-halflings-regular.woff2');
-      complete();
-    });
-
-    mkdir(path + '/routes', function(){
-      write(path + '/routes/index.js', index);
-      write(path + '/routes/ajax.js', ajax);
-      write(path + '/routes/users.js', users);
-      complete();
-    });
-
-    mkdir(path + '/views', function(){
-      copy_template('jade/index.jade', path + '/views/index.jade');
-      copy_template('jade/layout.jade', path + '/views/layout.jade');
-      copy_template('jade/error.jade', path + '/views/error.jade');
-      copy_template('jade/ajax.jade', path + '/views/ajax.jade');
-      complete();
-    });
-
-    mkdir(path + '/views/pages', function(){
-      copy_template('jade/pages/contents.jade', path + '/views/pages/contents.jade');
-      complete();
-    });
-
-    // CSS Engine support
-    switch (program.css) {
-      case 'sass':
-        app = app.replace('{css}', eol + 'app.use(require(\'node-sass-middleware\')({\n  src: path.join(__dirname, \'public\'),\n  dest: path.join(__dirname, \'public\'),\n  indentedSyntax: true,\n  sourceMap: true\n}));');
-        break;
-      default:
-        app = app.replace('{css}', '');
+  fse.copyRecursive(  path.join(__dirname, '..', 'templates') + '/src', path + '/src', function (err) {
+    if (err) {
+      throw err;
     }
 
-    // Template support
-    app = app.replace('{views}', program.template);
+    console.log("Copied './foo' to './bar'");
+  });
+
+
+  mkdir(path, function(){
 
     // package.json
     var pkg = {
@@ -187,14 +132,16 @@ function createApplication(app_name, path) {
       , version: '0.0.0'
       , private: true
       , scripts: {
-        start: 'node ./bin/www',
-        'postinstall':'bower install angular & bower install angular-animate & bower install bootstrap'
+        start: 'gulp',
+        'postinstall':'bower install angular & bower install angular-animate & bower install bootstrap & bower install bootstrap-sass-official'
        }
       , dependencies: {
           'express': '~4.13.1',
           'body-parser': '~1.13.2',
           'cookie-parser': '~1.3.5',
           'debug': '~2.2.0',
+          'gulp-json-sass': '0.0.2',
+          'jade': '~1.11.0',
           'morgan': '~1.6.1',
           'serve-favicon': '~2.3.0',
           'bower': ''
@@ -202,50 +149,14 @@ function createApplication(app_name, path) {
       , devDependencies: {
         "gulp": "^3.9.0",
         "gulp-concat": "^2.6.0",
+        "gulp-sass": "^2.1.1",
         "gulp-uglify": "^1.5.1"
       }
     }
 
-    switch (program.template) {
-      case 'jade':
-        pkg.dependencies['jade'] = '~1.11.0';
-        break;
-      case 'ejs':
-        pkg.dependencies['ejs'] = '~2.3.3';
-        break;
-      case 'hjs':
-        pkg.dependencies['hjs'] = '~0.0.6';
-        break;
-      case 'hbs':
-        pkg.dependencies['hbs'] = '~3.1.0';
-        break;
-      default:
-    }
-
-    // CSS Engine support
-    switch (program.css) {
-      case 'less':
-        pkg.dependencies['less-middleware'] = '1.0.x';
-        break;
-      case 'compass':
-        pkg.dependencies['node-compass'] = '0.2.3';
-        break;
-      case 'stylus':
-        pkg.dependencies['stylus'] = '0.42.3';
-        break;
-      case 'sass':
-        pkg.dependencies['node-sass-middleware'] = '0.8.0';
-        break;
-      default:
-    }
-
-    // sort dependencies like npm(1)
-    pkg.dependencies = sortedObject(pkg.dependencies);
-
     // write files
     write(path + '/package.json', JSON.stringify(pkg, null, 2));
     write(path + '/app.js', app);
-    write(path + '/ababool.json', ababooljson);
     write(path + '/gulpfile.js', gulpfile);
 
     mkdir(path + '/bin', function(){
@@ -253,10 +164,6 @@ function createApplication(app_name, path) {
       write(path + '/bin/www', www, 0755);
       complete();
     });
-
-    if (program.git) {
-      write(path + '/.gitignore', fs.readFileSync(__dirname + '/../templates/js/gitignore', 'utf-8'));
-    }
 
     complete();
   });

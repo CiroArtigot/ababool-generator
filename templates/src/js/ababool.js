@@ -2,7 +2,7 @@
 		var app = angular.module('ababool', ['ngAnimate']); // Declaramos un modulo y el nombre de la aplicación "tienda"
 
 
-		app.controller('ababoolCtrl', function ($scope, $timeout, $http) {
+		app.controller('ababoolCtrl', function ($scope, $timeout, $http, $compile) {
 
 			$scope.getpages = function() {
 				$scope.pages = document.getElementsByClassName("pt-page");
@@ -41,79 +41,60 @@
 				return true;
 			}
 
-
 			$scope.getpages(); //all the loaded pages
-
 
 			$scope.$watch("current", function(){
 				$scope.thenavigator($scope.current);
 			});
 
-
-
-
-			//
-
 			$scope.ineffect = 'pt-current pt-scaleUp';
 			$scope.outeffect = 'pt-currentout pt-moveToBottom pt-ontop';
-
 			$scope.animationout = '';
 			$scope.animationin = '';
-
-
-
-			/* preloader out */
-			$timeout(function() {
-            	$scope.preloader = true;
-       		}, 1000);
+			$scope.main = angular.element(document.querySelector( '#pt-main' ));
 
 			/* gotopage funtion */
 			$scope.gotopage = function(id) {
 
-
+				// no id or same page return
 				if(id=='') return true;
+				if(id== $scope.current) return true;
 
+				// look if the page is loaded
 				var ispage = 0;
 				for(page in $scope.pages) {
 						if(id==page) ispage = 1;
 				}
+
+				//if the page isn't loaded then look for it by AJAX
 				if(!ispage) {
-
-					console.log('no esta la pagina');
-
+					//AJAX get request, send id
+					//to do:token and preloader
 					$http.get('ajax/?id=' + id).
 				    success(function(data, status, headers, config) {
-
-							console.log('recibinmos data: ' + data);
-				      $scope.newpage = data;
+							$timeout(function(){
+							  var template = data;
+								$scope.$apply(function() {
+	                var content = $compile(template)($scope);
+	                $scope.main.append(content);
+								})
+								$scope.gotopage(id);
+        			},1000);
 				    }).
 				    error(function(data, status, headers, config) {
-				      // log error
-							console.log('error');
 				    });
-
-						console.log('terminando');
-
 						return true;
-
 				}
 
 				$scope.hidecontainer = $scope.current;
-
 				$timeout(function() {
-
 					$scope.animationout = $scope.current;
 					$scope.animationin = id;
 					$scope.current = id;
-
 					$scope.thenavigator(id);
-
 				}, 1000);
-
 				return true;
 			}
-
-
 
 			$scope.isvisible = function(id) {
 				if(id == $scope.current) return true;
@@ -122,11 +103,7 @@
 			}
 
 			$scope.viewcontainer = function(id) {
-
-				//return true;
-
 				if(id == $scope.hidecontainer) return false;
-
 				if(id == $scope.current && $scope.animationin == '') return true;
 				return false;
 			}
@@ -137,28 +114,26 @@
 				return '';
 			}
 
+			$scope.doOnEndPage = function(id) {
+				var pahtlocation = '';
+				var pahtlocationfull = pahtlocation +  id;
+				document.title = 'El titulo';
+				window.history.pushState({}, "Title", pahtlocationfull);
+				return true;
+			}
+
 			$scope.endpage = function(id, event) {
 				// cuando termina la animacion ponemos la variable en blanco.
 				if($scope.animationout == id ) $scope.animationout = '';
 
 				if($scope.animationin == id ) {
 					$scope.animationin = '';
-					console.log('acaba: ' + id);
-
-          var pahtlocation = '';
-					var pahtlocationfull = pahtlocation +  id;
-
-					document.title = 'El titulo';
-					window.history.pushState({}, "Title", pahtlocationfull);
-
-
+					$scope.doOnEndPage(id);
 				}
 				$scope.hidecontainer = '';
 				$scope.$apply();
 			}
-
 		});
-
 
 		app.directive('animationend', function() {
 			return {

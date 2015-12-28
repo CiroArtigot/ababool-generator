@@ -1,0 +1,37 @@
+extends layout
+
+block content
+
+  include ../ababool_plugins/preloader/index.jade
+  include ../ababool_plugins/mainmenu/index.jade
+
+  #pt-main(class="pt-perspective"  ng-init="newpages=''; current='" + cur + "'")
+
+    input(
+      type='hidden'
+      name='current'
+      value="{{current}}"
+    )
+
+    - var thepages = pages
+        each value, index in thepages
+          if !value.ajax
+            div(
+            id= index
+            ng-class= "theclass('" + index + "')"
+            data-left= value.left
+            data-right= value.right
+            data-down= value.down
+            data-up= value.up
+            animationend="endpage"
+            class="pt-page"
+            ng-show="isvisible('" + index + "')"
+            )
+              div(
+              class="container clearfix"
+              ng-show="viewcontainer('" + index + "')"
+              )
+                include pages/contents.jade
+
+  include ../ababool_plugins/footer/index.jade
+  include ../ababool_plugins/navigator/index.jade

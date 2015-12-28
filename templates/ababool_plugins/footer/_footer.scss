@@ -1,0 +1,22 @@
+
+
+ul#footer {
+    list-style-type: none;
+    display: inline-flex;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 9999;
+    width: 100%;
+    background-color: #000;
+    opacity: 0.8;
+}
+
+.footerli {
+    cursor: pointer;
+    padding: 10px;
+}
+
+.footerli a{
+  color: #fff;
+}

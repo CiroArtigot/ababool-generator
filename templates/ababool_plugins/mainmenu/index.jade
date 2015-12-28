@@ -1,0 +1,41 @@
+ul(id="mainmenu" class="mainmenu")
+  li(
+    id= "menu-home"
+    ng-click="gotopage('home')"
+    class="mainmenuli mainmenuicon"
+    )
+    span(
+      class="glyphicon glyphicon-home"
+      )
+  li(
+    id= "menu-back"
+    ng-click="goback"
+    class="mainmenuli mainmenuicon"
+    )
+    span(
+      class="glyphicon glyphicon-arrow-left"
+      )
+  li(
+    id= "menu-fullscreen"
+    ng-click="fullscreen"
+    class="mainmenuli mainmenuicon"
+    )
+    span(
+      class="glyphicon glyphicon-fullscreen"
+      )
+  - var thepages = pages
+      each value, index in thepages
+        if value.mainmenu
+          li(
+          id= "menu-" + index
+          ng-click="gotopage('" + index + "')"
+          class="mainmenuli"
+          )= value.menutitle
+  li(
+    id= "menu-mainmenu"
+    ng-click="gotopage('mainmenu')"
+    class="mainmenuli mainmenuicon pull-right"
+    )
+    span(
+      class="glyphicon glyphicon-menu-hamburger"
+      )
