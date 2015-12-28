@@ -119,7 +119,8 @@ function createApplication(app_name, path) {
       , version: '1.0.0'
       , private: true
       , scripts: {
-        start: 'gulp'
+        start: 'gulp',
+        'postinstall':'bower install angular & bower install angular-animate & bower install bootstrap-sass-official'
        }
       , dependencies: {
           'express': '~4.13.1',
