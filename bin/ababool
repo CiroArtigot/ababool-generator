@@ -23,6 +23,7 @@ process.exit = exit
 
 // CLI
 
+
 before(program, 'outputHelp', function () {
   this.allowUnknownOption();
 });
@@ -105,7 +106,7 @@ function createApplication(app_name, path) {
   copy_template('/src', path);
   copy_template('/ababool_plugins', path);
   copy_template('/config', path);
-  copy_template('/js', path);
+  //copy_template('/js', path);
   copy_template('/public', path);
   copy_template('/routes', path);
   copy_template('/views', path);
@@ -115,11 +116,10 @@ function createApplication(app_name, path) {
     // package.json
     var pkg = {
         name: app_name
-      , version: '0.0.0'
+      , version: '1.0.0'
       , private: true
       , scripts: {
-        start: 'gulp',
-        'postinstall':'bower install angular & bower install angular-animate & bower install bootstrap & bower install bootstrap-sass-official'
+        start: 'gulp'
        }
       , dependencies: {
           'express': '~4.13.1',
