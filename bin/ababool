@@ -100,13 +100,10 @@ function createApplication(app_name, path) {
   var www = loadTemplate('js/www');
   var gulpfile = loadTemplate('js/gulpfile.js');
 
-  fse.copyRecursive( './src', path + '/src', function (err) {
-    if (err) {
-      throw err;
-    }
-
-    console.log("Copied './foo' to './bar'");
-  });
+  fs.copy('./templates/src', path + '/src', function (err) {
+    if (err) return console.error(err)
+    console.log("success!")
+  }) // copies file
 
 
   mkdir(path, function(){
