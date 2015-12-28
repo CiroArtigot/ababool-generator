@@ -7,7 +7,7 @@ var fs = require('fs');
 var fse = require('fs-extra');
 var path = require('path');
 var readline = require('readline');
-var sortedObject = require('sorted-object');
+//var sortedObject = require('sorted-object');
 
 var _exit = process.exit;
 var eol = os.EOL;
@@ -98,22 +98,7 @@ function createApplication(app_name, path) {
   // JavaScript
   var app = loadTemplate('js/app.js');
   var www = loadTemplate('js/www');
-  var index = loadTemplate('js/routes/index.js');
-  var users = loadTemplate('js/routes/users.js');
-  var ajax = loadTemplate('js/routes/ajax.js');
-  var ababooljs = loadTemplate('js/ababool.js');
-
-  // CSS
-  var css_system = loadTemplate('css/system.css');
-  var css_theme = loadTemplate('css/theme.css');
-  var css_transitions = loadTemplate('css/transitions.css');
-  var sass = loadTemplate('css/style.sass');
-
-  var ababooljson = loadTemplate('ababool/ababool.json');
   var gulpfile = loadTemplate('ababool/gulpfile.js');
-
-
-
 
   fse.copyRecursive(  path.join(__dirname, '..', 'templates') + '/src', path + '/src', function (err) {
     if (err) {
