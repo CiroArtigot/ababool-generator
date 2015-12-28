@@ -1,0 +1,106 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/nodejs', '/usr/bin/npm', 'publish' ]
+2 info using npm@2.14.7
+3 info using node@v4.2.3
+4 verbose publish [ '.' ]
+5 silly cache add args [ '.', null ]
+6 verbose cache add spec .
+7 silly cache add parsed spec Result {
+7 silly cache add   raw: '.',
+7 silly cache add   scope: null,
+7 silly cache add   name: null,
+7 silly cache add   rawSpec: '.',
+7 silly cache add   spec: '/home/ciro/ababool_generator/ababool-generator',
+7 silly cache add   type: 'directory' }
+8 verbose addLocalDirectory /home/ciro/.npm/ababool-generator/1.1.5/package.tgz not in flight; packing
+9 verbose tar pack [ '/home/ciro/.npm/ababool-generator/1.1.5/package.tgz',
+9 verbose tar pack   '/home/ciro/ababool_generator/ababool-generator' ]
+10 verbose tarball /home/ciro/.npm/ababool-generator/1.1.5/package.tgz
+11 verbose folder /home/ciro/ababool_generator/ababool-generator
+12 info prepublish ababool-generator@1.1.5
+13 verbose addLocalTarball adding from inside cache /home/ciro/.npm/ababool-generator/1.1.5/package.tgz
+14 silly cache afterAdd ababool-generator@1.1.5
+15 verbose afterAdd /home/ciro/.npm/ababool-generator/1.1.5/package/package.json not in flight; writing
+16 verbose afterAdd /home/ciro/.npm/ababool-generator/1.1.5/package/package.json written
+17 silly publish { name: 'ababool-generator',
+17 silly publish   description: 'Ababool application generator',
+17 silly publish   version: '1.1.5',
+17 silly publish   author: { name: 'Ciro Artigot', email: 'ciro.artigot@gmail.com' },
+17 silly publish   contributors:
+17 silly publish    [ { name: 'someone', email: 'ciro.artigot@gmail.com' },
+17 silly publish      { name: 'other', email: 'ciro.artigot@gmail.com' } ],
+17 silly publish   keywords: [ 'ababool', 'ababoolgenerator' ],
+17 silly publish   repository:
+17 silly publish    { type: 'git',
+17 silly publish      url: 'git+https://github.com/ciroartigot/ababool-generator.git' },
+17 silly publish   license: 'MIT',
+17 silly publish   dependencies:
+17 silly publish    { commander: '2.7.1',
+17 silly publish      mkdirp: '0.5.1',
+17 silly publish      'fs-extra': '^0.26.3',
+17 silly publish      'sorted-object': '1.0.0' },
+17 silly publish   main: 'bin/ababool',
+17 silly publish   preferGlobal: true,
+17 silly publish   bin: { ababool: './bin/ababool' },
+17 silly publish   devDependencies: { mocha: '2.2.5', rimraf: '~2.2.8', supertest: '1.0.1' },
+17 silly publish   engines: { node: '>= 0.10' },
+17 silly publish   files: [ 'LICENSE', 'bin/', 'templates/' ],
+17 silly publish   readme: '\nAbabool application generator.\n\n\n## Installation\n\n```sh\n$ npm install -g ababool-generator\n```\n\n## Quick Start\n\nThe quickest way to get started with express is to utilize the executable to generate an application as shown below:\n\nCreate the app:\n\n```bash\n$ ababool /tmp/foo && cd /tmp/foo\n```\n\nInstall dependencies:\n\n```bash\n$ npm install\n```\n\nConcatenate CSS and JS with Gulp:\n\n```bash\n$ gulp concatenar\n```\n\nRock and Roll\n\n```bash\n$ npm start\n```\n\n## Command Line Options\n\nThis generator can also be further configured with the following command line flags.\n\n    -h, --help          output usage information\n    -V, --version       output the version number\n    -c, --css <engine>  add stylesheet <engine> support (less|stylus|compass|sass) (defaults to plain css)\n        --git           add .gitignore\n    -f, --force         force on non-empty directory\n\n## License\n\n[MIT](LICENSE)\n\n',
+17 silly publish   readmeFilename: 'README.md',
+17 silly publish   gitHead: '41c8de1371360b954176cf623cd03e3608d2301c',
+17 silly publish   bugs: { url: 'https://github.com/ciroartigot/ababool-generator/issues' },
+17 silly publish   homepage: 'https://github.com/ciroartigot/ababool-generator#readme',
+17 silly publish   _id: 'ababool-generator@1.1.5',
+17 silly publish   scripts: {},
+17 silly publish   _shasum: 'b7f2ecb07cf4f625eaaf037f883c5630b0c6add4',
+17 silly publish   _from: '.' }
+18 verbose getPublishConfig undefined
+19 silly mapToRegistry name ababool-generator
+20 silly mapToRegistry using default registry
+21 silly mapToRegistry registry https://registry.npmjs.org/
+22 silly mapToRegistry uri https://registry.npmjs.org/ababool-generator
+23 verbose publish registryBase https://registry.npmjs.org/
+24 silly publish uploading /home/ciro/.npm/ababool-generator/1.1.5/package.tgz
+25 verbose request uri https://registry.npmjs.org/ababool-generator
+26 verbose request sending authorization for write operation
+27 info attempt registry request try #1 at 19:41:39
+28 verbose request using bearer token for auth
+29 verbose request id a83ae65421ba78d0
+30 http request PUT https://registry.npmjs.org/ababool-generator
+31 http 403 https://registry.npmjs.org/ababool-generator
+32 verbose headers { 'content-type': 'application/json',
+32 verbose headers   'cache-control': 'max-age=300',
+32 verbose headers   'content-length': '95',
+32 verbose headers   'accept-ranges': 'bytes',
+32 verbose headers   date: 'Mon, 28 Dec 2015 18:41:55 GMT',
+32 verbose headers   via: '1.1 varnish',
+32 verbose headers   connection: 'keep-alive',
+32 verbose headers   'x-served-by': 'cache-fra1247-FRA',
+32 verbose headers   'x-cache': 'MISS',
+32 verbose headers   'x-cache-hits': '0',
+32 verbose headers   'x-timer': 'S1451328099.594334,VS0,VE15405' }
+33 verbose request invalidating /home/ciro/.npm/registry.npmjs.org/ababool-generator on PUT
+34 error publish Failed PUT 403
+35 verbose stack Error: "You cannot publish over the previously published version 1.1.5." : ababool-generator
+35 verbose stack     at makeError (/usr/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:264:12)
+35 verbose stack     at CachingRegistryClient.<anonymous> (/usr/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:252:14)
+35 verbose stack     at Request._callback (/usr/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:172:14)
+35 verbose stack     at Request.self.callback (/usr/lib/node_modules/npm/node_modules/request/request.js:198:22)
+35 verbose stack     at emitTwo (events.js:87:13)
+35 verbose stack     at Request.emit (events.js:172:7)
+35 verbose stack     at Request.<anonymous> (/usr/lib/node_modules/npm/node_modules/request/request.js:1063:14)
+35 verbose stack     at emitOne (events.js:82:20)
+35 verbose stack     at Request.emit (events.js:169:7)
+35 verbose stack     at IncomingMessage.<anonymous> (/usr/lib/node_modules/npm/node_modules/request/request.js:1009:12)
+36 verbose statusCode 403
+37 verbose pkgid ababool-generator
+38 verbose cwd /home/ciro/ababool_generator/ababool-generator
+39 error Linux 3.19.0-42-generic
+40 error argv "/usr/bin/nodejs" "/usr/bin/npm" "publish"
+41 error node v4.2.3
+42 error npm  v2.14.7
+43 error code E403
+44 error "You cannot publish over the previously published version 1.1.5." : ababool-generator
+45 error If you need help, you may report this error at:
+45 error     <https://github.com/npm/npm/issues>
+46 verbose exit [ 1, true ]
