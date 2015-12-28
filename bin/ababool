@@ -98,7 +98,7 @@ function createApplication(app_name, path) {
   // JavaScript
   var app = loadTemplate('js/app.js');
   var www = loadTemplate('js/www');
-  var gulpfile = loadTemplate('ababool/gulpfile.js');
+  var gulpfile = loadTemplate('js/gulpfile.js');
 
   fse.copyRecursive(  path.join(__dirname, '..', 'templates') + '/src', path + '/src', function (err) {
     if (err) {
