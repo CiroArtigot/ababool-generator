@@ -1,5 +1,12 @@
 
-Ababool application generator.
+
+## Ababool application generator
+
+Ababool is a Open-Source Full-Stack Javascript Solution for MEAN Single Page Applications
+
+Ababool MEAN is based on the Ababool LAMP version http://algosemueve.es/ababool/
+
+Currently working on the migration process from LAMP to MEAN
 
 
 ## Installation
@@ -24,27 +31,12 @@ Install dependencies:
 $ npm install
 ```
 
-Concatenate CSS and JS with Gulp:
-
-```bash
-$ gulp concatenar
-```
-
 Rock and Roll
 
 ```bash
 $ npm start
 ```
 
-## Command Line Options
-
-This generator can also be further configured with the following command line flags.
-
-    -h, --help          output usage information
-    -V, --version       output the version number
-    -c, --css <engine>  add stylesheet <engine> support (less|stylus|compass|sass) (defaults to plain css)
-        --git           add .gitignore
-    -f, --force         force on non-empty directory
 
 ## License
 
