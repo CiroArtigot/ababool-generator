@@ -1,6 +1,13 @@
-p Hola hola
-p que tal
 
 
-div
-  p= url
+if index=="home"
+  include home.jade
+
+if index=="why"
+  include why.jade
+
+if index=="what"
+  include what.jade
+
+if index=="ajax1"
+  include ajax1.jade
