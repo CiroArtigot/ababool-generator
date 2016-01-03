@@ -9,7 +9,9 @@ ul#footer {
     z-index: 9999;
     width: 100%;
     background-color: #000;
-    opacity: 0.8;
+    opacity: 0.95;
+    margin: 0;
+    font-size: 0.9em;
 }
 
 .footerli {
@@ -17,6 +19,10 @@ ul#footer {
     padding: 10px;
 }
 
-.footerli a{
+.footerli{
+  color: #e2e2e2;
+}
+
+.footerli:hover {
   color: #fff;
 }

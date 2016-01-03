@@ -1,7 +1,7 @@
 ul(id="mainmenu" class="mainmenu")
   li(
     id= "menu-home"
-    ng-click="gotopage('home')"
+    ng-click="gotopage('home',10)"
     class="mainmenuli mainmenuicon"
     )
     span(
@@ -9,7 +9,7 @@ ul(id="mainmenu" class="mainmenu")
       )
   li(
     id= "menu-back"
-    ng-click="goback"
+    ng-click="gotopage(backpage,10)"
     class="mainmenuli mainmenuicon"
     )
     span(
@@ -17,7 +17,7 @@ ul(id="mainmenu" class="mainmenu")
       )
   li(
     id= "menu-fullscreen"
-    ng-click="fullscreen"
+    ng-click="screenfull()"
     class="mainmenuli mainmenuicon"
     )
     span(
@@ -28,12 +28,12 @@ ul(id="mainmenu" class="mainmenu")
         if value.mainmenu
           li(
           id= "menu-" + index
-          ng-click="gotopage('" + index + "')"
+          ng-click="gotopage('" + index + "'," + value.animation + ")"
           class="mainmenuli"
           )= value.menutitle
   li(
     id= "menu-mainmenu"
-    ng-click="gotopage('mainmenu')"
+    ng-click="gotopage('mainmenu',46)"
     class="mainmenuli mainmenuicon pull-right"
     )
     span(

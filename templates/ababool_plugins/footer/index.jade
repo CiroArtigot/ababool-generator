@@ -4,6 +4,6 @@ ul(id="footer" class="footer")
         if value.footer
           li(
           id= "footerli-" + index
-          ng-click="gotopage('" + index + "')"
+          ng-click="gotopage('" + index + "'," + value.animation + ")"
           class="footerli"
           )= value.menutitle

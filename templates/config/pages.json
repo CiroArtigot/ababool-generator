@@ -11,7 +11,8 @@
           "left" :"why",
           "right":"what",
           "up" : "ajax1",
-          "mainmenu" :1
+          "mainmenu" :1,
+          "animation" : 17
       },
 
       "what" : {
@@ -24,7 +25,8 @@
           "up":"home",
           "down": "why",
           "mainmenu" :1,
-          "footer":1
+          "footer":1,
+          "animation" : 38
       },
 
       "why" : {
@@ -35,7 +37,8 @@
           "left" :"what",
           "right":"home",
           "mainmenu" :1,
-          "footer":1
+          "footer":1,
+          "animation" : 32
       },
 
       "ajax1" : {
@@ -47,11 +50,13 @@
           "ajax" : 1,
           "reload" : 1,
           "mainmenu" :1,
-          "footer":1
+          "footer":1,
+          "animation" : 22
       },
 
       "mainmenu" : {
-          "id" : "mainmenu"
+          "id" : "mainmenu",
+          "animation" : 11
       }
 
 
