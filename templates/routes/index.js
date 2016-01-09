@@ -5,6 +5,17 @@ var router = express.Router();
 var ababool = require("../config/pages.json");
 // the url query
 
+var Controller = require ('./controller');
+
+
+router.get('/api/persona', Controller.getPersona);
+// Crear una nueva Persona
+router.post('/api/persona', Controller.setPersona);
+// Modificar los datos de una Persona
+router.put('/api/persona/:persona_id', Controller.updatePersona);
+// Borrar una Persona
+router.delete('/api/persona/:persona_id', Controller.removePersona);
+
 
 router.get('/ajax', function(req, res, next) {
 
@@ -21,7 +32,7 @@ router.get('/ajax', function(req, res, next) {
   for (i in ababool.pages)  {
     if(theurl==i) current = i;
   }
-  
+
   res.render('ajax', { id:req.query.id, cur:current, url: theurl, pages: ababool.pages, title: 'Ababool' });
 });
 
