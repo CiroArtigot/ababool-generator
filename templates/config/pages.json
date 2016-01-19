@@ -12,7 +12,12 @@
           "right":"what",
           "up" : "ajax1",
           "mainmenu" :1,
-          "animation" : 17
+          "animation" : 17,
+          "data" : "home.js",
+          "author" : "Ciro Artigot",
+          "ogimage" : "images/ababool01.jpg",
+          "ogtype" : "article",
+          "twittercreator" : "@ciroartigot"
       },
 
       "what" : {
@@ -24,9 +29,12 @@
           "right":"why",
           "up":"home",
           "down": "why",
+          "next" : "why",
+          "prev" : "home",
           "mainmenu" :1,
           "footer":1,
-          "animation" : 38
+          "animation" : 38,
+          "data" : "comments.js"
       },
 
       "why" : {
@@ -38,7 +46,35 @@
           "right":"home",
           "mainmenu" :1,
           "footer":1,
-          "animation" : 32
+          "animation" : 32,
+          "data" : "why.json"
+      },
+
+      "suscribe" : {
+          "id" : "suscribe",
+          "title" : "Why Ababool the JS Full Stack SPA",
+          "menutitle": "suscribe",
+          "description": "this is the description of why",
+          "left" :"what",
+          "right":"home",
+          "mainmenu" :1,
+          "ajax" :1,
+          "blocked" : 1,
+          "footer":1,
+          "animation" : 22
+      },
+
+      "form" : {
+          "id" : "form",
+          "title" : "this is a form example",
+          "menutitle": "Form",
+          "description": "this is a form example",
+          "left" :"what",
+          "right":"home",
+          "blocked" : 1,
+          "mainmenu" :1,
+          "footer":1,
+          "animation" : 44
       },
 
       "ajax1" : {
@@ -51,7 +87,8 @@
           "reload" : 1,
           "mainmenu" :1,
           "footer":1,
-          "animation" : 22
+          "animation" : 22,
+          "data" : "ajax1.js"
       },
 
       "mainmenu" : {

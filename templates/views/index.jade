@@ -5,7 +5,9 @@ block content
   include ../ababool_plugins/preloader/index.jade
   include ../ababool_plugins/mainmenu/index.jade
 
-  #pt-main(class="pt-perspective"  ng-init="newpages=''; current='" + cur + "'")
+  #pt-main(
+    class="pt-perspective"
+    ng-init="newpages=''; current='" + cur + "'; token='" + token + "'")
 
     input(
       type='hidden'
@@ -15,7 +17,7 @@ block content
 
     - var thepages = pages
         each value, index in thepages
-          if !value.ajax
+          if !value.ajax || index == cur
             div(
             id= index
             ng-class= "theclass('" + index + "')"

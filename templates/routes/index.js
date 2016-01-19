@@ -3,58 +3,70 @@ var router = express.Router();
 
 // the Ababool vars
 var ababool = require("../config/pages.json");
-// the url query
-
+var conf = require("../config/ababool.json");
 var Controller = require ('./controller');
 
+router.get('/api/comments', Controller.getComments);
+router.post('/api/form', Controller.setComment);
 
-router.get('/api/persona', Controller.getPersona);
-// Crear una nueva Persona
-router.post('/api/persona', Controller.setPersona);
-// Modificar los datos de una Persona
-router.put('/api/persona/:persona_id', Controller.updatePersona);
-// Borrar una Persona
-router.delete('/api/persona/:persona_id', Controller.removePersona);
-
-
-router.get('/ajax', function(req, res, next) {
-
+router.post('/ajax', function(req, res, next) {
   var theurl = req.url.substr(1);
-
+  var page = req.query.id;
   var current = '';
+  var data = {};
 
-  // find the default page
   for (i in ababool.pages)  {
-    if(ababool.pages[i]['default']==1) current = i;
+    if(page==i && ababool.pages[i]['ajax']==1) current = i;
   }
+  // load data
 
-  // if there is a id request then the current page is the id requested
-  for (i in ababool.pages)  {
-    if(theurl==i) current = i;
-  }
+  if(ababool.pages[current]['data'])
+    data[current] = require ('./data/' + ababool.pages[current]['data']);
 
-  res.render('ajax', { id:req.query.id, cur:current, url: theurl, pages: ababool.pages, title: 'Ababool' });
+  if(current && req.query.token == req.session.token )
+    res.render('ajax', {
+      id:req.query.id,
+      token: req.session.token,
+      cur:current,
+      url: theurl,
+      pages: ababool.pages,
+      conf: conf,
+      data: data
+    });
 });
 
 // router for all other peticions
 router.get('/*', function(req, res, next) {
-  //render the view
 
-  var theurl = req.url.substr(1);
-
+  var theurl = req.url.substr(1); // problably needed to change this
   var current = '';
+  var data = {};
 
-  // find the default page
-  for (i in ababool.pages)  {
+  // default page
+  for (i in ababool.pages)
     if(ababool.pages[i]['default']==1) current = i;
+
+  // request page
+  for (i in ababool.pages)
+    if(theurl==i && ababool.pages[i]['blocked']!=1) current = i;
+
+  // load data
+  for (i in ababool.pages){
+    if(ababool.pages[i]['data']
+    && ( ababool.pages[i]['ajax']!=1 || (ababool.pages[i]['ajax']==1 && current == i))
+  ) data[i] = require ('./data/' + ababool.pages[i]['data']);
   }
 
-  // if there is a id request then the current page is the id requested
-  for (i in ababool.pages)  {
-    if(theurl==i) current = i;
-  }
+  //console.log('data: ' + JSON.stringify(data));
 
-  res.render('index', { cur:current, url: theurl, pages: ababool.pages, title: 'Ababool' });
+  res.render('index', {
+    cur:current,
+    token: req.session.token,
+    url: theurl,
+    pages: ababool.pages,
+    conf: conf,
+    data: data
+  });
 });
 
 module.exports = router;

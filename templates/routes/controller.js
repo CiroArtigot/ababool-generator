@@ -1,64 +1,38 @@
-var Persona = require('./model/person');
+var mongoose = require('mongoose');
+var Comment  = mongoose.model('Comment');
 
-// Obtiene todos los objetos Persona de la base de datos
-exports.getPersona = function (req, res){
-	Persona.find(
-		function(err, persona) {
-			if (err)
-				res.send(err)
-					res.json(persona); // devuelve todas las Personas en JSON
-				}
-			);
-}
+//GET - Return all tvshows in the DB
+exports.getComments = function(req, res) {
+    Comment.find(function(err, comments) {
+    if(err) res.send(500, err.message);
+
+    console.log('GET /comments')
+        res.status(200).jsonp(comments);
+    });
+};
 
 // Guarda un objeto Persona en base de datos
-exports.setPersona = function(req, res) {
+exports.setComment = function(req, res) {
+    var datetime = new Date();
+    var session = req.session.token;
 
-		// Creo el objeto Persona
-		Persona.create(
-			{nombre : req.body.nombre,	apellido: req.body.apellido, edad: req.body.edad},
-			function(err, persona) {
-				if (err)
-					res.send(err);
+    if( session != req.body.params.token) {
+        res.send({status:'FAIL', session : 'No'});
+    } else {
 
-				// Obtine y devuelve todas las personas tras crear una de ellas
-				Persona.find(function(err, persona) {
-				 	if (err)
-				 		res.send(err)
-				 	res.json(persona);
-				});
-			});
-
-	}
-
-// Modificamos un objeto Persona de la base de datos
-exports.updatePersona = function(req, res){
-	Persona.update( {_id : req.params.persona_id},
-					{$set:{nombre : req.body.nombre,	apellido: req.body.apellido, edad: req.body.edad}},
-					function(err, persona) {
-						if (err)
-							res.send(err);
-
-				// Obtine y devuelve todas las personas tras crear una de ellas
-				Persona.find(function(err, persona) {
-				 	if (err)
-				 		res.send(err)
-				 	res.json(persona);
-				});
-			});
-	}
-
-// Elimino un objeto Persona de la base de Datos
-exports.removePersona = function(req, res) {
-	Persona.remove({_id : req.params.persona_id}, function(err, persona) {
-		if (err)
-			res.send(err);
-
-			// Obtine y devuelve todas las personas tras borrar una de ellas
-			Persona.find(function(err, persona) {
-				if (err)
-					res.send(err)
-				res.json(persona);
-			});
-		});
-}
+      Comment.create(
+        {
+          name : req.body.params.name,
+          email: req.body.params.email,
+          comment: req.body.params.comment,
+          date: datetime
+        },
+        function(err, comment) {
+          if (err)
+            res.send(err);
+          else {
+            res.send({status:'OK'});
+          }
+        });
+    }
+	};

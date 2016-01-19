@@ -1,15 +1,12 @@
 {
 
-  "title" : "Ababool the JS Full Stack SPA",
-  "description": "this is the description of home",
-  "theme": "ababool",
-  "pages": "pages.json",
-  "saas": "sass.json",
-  "plugins" :{
-    "footer": true,
-    "navigator": true,
-    "mainmenu": true,
-    "google-analytics": true
-  }
+      "general" : {
+          "domain" : "http://ababool.algosemueve.es/",
+          "sitename" : "Ababool MEAN Stack",
+          "lang" : "en-gb"
+      },
+      "socialmedia" : {
+          "twitter" : "@aixeena"
+      }
 
 }

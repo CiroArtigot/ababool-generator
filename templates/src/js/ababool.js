@@ -4,10 +4,6 @@
 
 		app.controller('ababoolCtrl', function ($scope, $timeout, $http, $compile) {
 
-			$scope.getpages = function() {
-				$scope.pages = document.getElementsByClassName("pt-page");
-				return true;
-			}
 
 			$scope.getTransition = function(animation) {
 
@@ -115,8 +111,6 @@
 				return true;
 			}
 
-			$scope.getpages(); //all the loaded pages
-
 			$scope.$watch("current", function(){
 				$scope.thenavigator($scope.current);
 			});
@@ -149,15 +143,16 @@
 
 				// look if the page is loaded
 				var ispage = 0;
-				for(page in $scope.pages) {
-						if(id==page) ispage = 1;
-				}
+				var pages = document.getElementsByClassName("pt-page");
+
+				for(var i = 0; i < pages.length; i++)
+					if(id == pages.item(i).id) ispage = 1;
 
 				//if the page isn't loaded then look for it by AJAX
 				if(!ispage) {
 					//AJAX get request, send id
 					//to do:token and preloader
-					$http.get('ajax/?id=' + id).
+					$http.post('ajax/?id=' + id + '&token=' + $scope.token).
 				    success(function(data, status, headers, config) {
 							$timeout(function(){
 							  var template = data;
@@ -205,8 +200,8 @@
 			$scope.doOnEndPage = function(id) {
 				var pahtlocation = '';
 				var pahtlocationfull = pahtlocation +  id;
-				document.title = 'El titulo';
-				window.history.pushState({}, "Title", pahtlocationfull);
+				ga('send', 'pageview', pahtlocationfull);
+				window.history.pushState({}, "Title", id);
 				return true;
 			}
 

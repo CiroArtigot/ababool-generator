@@ -74,5 +74,5 @@ gulp.task('javascrits', function() {
 
 // default task
 gulp.task('default', ['sass', 'fonts', 'images','javascrits'] , function() {
-  var ww = require('./bin/www');
+  //var www = require('./bin/www');
 });
