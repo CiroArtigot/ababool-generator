@@ -120,7 +120,7 @@
 			$scope.animationout = '';
 			$scope.animationin = '';
 			$scope.main = angular.element(document.querySelector( '#pt-main' ));
-			$scope.backpage = '';
+		//	$scope.backpage = '';
 
 
 
@@ -168,14 +168,14 @@
 						return true;
 				}
 
-				$scope.hidecontainer = $scope.current;
-				$timeout(function() {
+			//	$scope.hidecontainer = $scope.current;
+			//	$timeout(function() {
 					$scope.animationout = $scope.current;
 					$scope.animationin = id;
-					$scope.backpage = $scope.current;
+				//	$scope.backpage = $scope.current;
 					$scope.current = id;
 					$scope.thenavigator(id);
-				}, 1000);
+				// }, 1000);
 				return true;
 			}
 
@@ -213,7 +213,7 @@
 					$scope.animationin = '';
 					$scope.doOnEndPage(id);
 				}
-				$scope.hidecontainer = '';
+			//	$scope.hidecontainer = '';
 				$scope.$apply();
 			}
 		});

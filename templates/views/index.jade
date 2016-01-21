@@ -5,15 +5,11 @@ block content
   include ../ababool_plugins/preloader/index.jade
   include ../ababool_plugins/mainmenu/index.jade
 
+  div#debug {{debugger}}
+
   #pt-main(
     class="pt-perspective"
-    ng-init="newpages=''; current='" + cur + "'; token='" + token + "'")
-
-    input(
-      type='hidden'
-      name='current'
-      value="{{current}}"
-    )
+    ng-init="newpages=''; current='" + cur + "'; token='" + token + "';debugger=''")
 
     - var thepages = pages
         each value, index in thepages

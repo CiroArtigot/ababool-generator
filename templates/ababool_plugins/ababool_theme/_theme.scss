@@ -48,3 +48,13 @@ div#pt-main {
     background-color: #fff;
     color: #000;
 }
+
+div#debug {
+    position: absolute;
+    z-index: 9999;
+    top: 100px;
+    height: 30px;
+    background-color: #fff;
+    min-width: 400px;
+    color: #000;
+}
