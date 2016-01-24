@@ -6,7 +6,7 @@
           "id" : "home",
           "default" : 1,
           "title" : "Ababool the JS Full Stack SPA",
-          "menutitle": "Home",
+          "menutitle": "Ababool",
           "description": "this is the description of home",
           "left" :"why",
           "right":"what",
@@ -60,7 +60,7 @@
           "mainmenu" :1,
           "ajax" :1,
           "blocked" : 1,
-          "footer":1,
+          "footer":0,
           "animation" : 22
       },
 
@@ -73,7 +73,7 @@
           "right":"home",
           "blocked" : 1,
           "mainmenu" :1,
-          "footer":1,
+          "footer":0,
           "animation" : 44
       },
 
@@ -86,7 +86,7 @@
           "ajax" : 1,
           "reload" : 1,
           "mainmenu" :1,
-          "footer":1,
+          "footer":0,
           "animation" : 22,
           "data" : "ajax1.js"
       },

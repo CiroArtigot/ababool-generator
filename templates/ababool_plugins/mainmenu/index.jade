@@ -15,27 +15,39 @@ ul(id="mainmenu" class="mainmenu")
     span(
       class="glyphicon glyphicon-arrow-left"
       )
-  li(
-    id= "menu-fullscreen"
-    ng-click="screenfull()"
-    class="mainmenuli mainmenuicon"
-    )
-    span(
-      class="glyphicon glyphicon-fullscreen"
-      )
+
   - var thepages = pages
       each value, index in thepages
         if value.mainmenu
           li(
           id= "menu-" + index
           ng-click="gotopage('" + index + "'," + value.animation + ")"
-          class="mainmenuli"
+          class="mainmenuli mainmenuliitem hidden-xs hidden-sm"
           )= value.menutitle
-  li(
-    id= "menu-mainmenu"
-    ng-click="gotopage('mainmenu',46)"
-    class="mainmenuli mainmenuicon pull-right"
+
+  - var thepages = pages
+      each value, index in thepages
+        if value.mainmenu && index == cur
+          div(
+            id= "menu-brand"
+            ng-click="gotopage('" + index + "'," + value.animation + ")"
+            class="mainmenuli mainmenuicon visible-xs-* visible-sm-* hidden-lg hidden-md"
+            )= value.menutitle
+
+div(
+  id= "menu-fullscreen"
+  ng-click="screenfull()"
+  class="mainmenuli mainmenuicon"
+  )
+  span(
+    class="glyphicon glyphicon-fullscreen"
     )
-    span(
-      class="glyphicon glyphicon-menu-hamburger"
-      )
+
+div(
+  id= "menu-mainmenu"
+  ng-click="gotopage('mainmenu',46)"
+  class="mainmenuli mainmenuicon"
+  )
+  span(
+    class="glyphicon glyphicon-menu-hamburger"
+    )
