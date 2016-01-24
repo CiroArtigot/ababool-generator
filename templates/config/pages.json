@@ -32,22 +32,88 @@
           "next" : "why",
           "prev" : "home",
           "mainmenu" :1,
-          "footer":1,
           "animation" : 38,
           "data" : "comments.js"
       },
 
-      "why" : {
-          "id" : "why",
+      "wow" : {
+          "id" : "wow",
           "title" : "Why Ababool the JS Full Stack SPA",
-          "menutitle": "Why",
+          "menutitle": "Wow",
           "description": "this is the description of why",
           "left" :"what",
           "right":"home",
           "mainmenu" :1,
-          "footer":1,
           "animation" : 32,
           "data" : "why.json"
+      },
+
+      "how" : {
+          "id" : "how",
+          "title" : "Why Ababool the JS Full Stack SPA",
+          "menutitle": "How",
+          "description": "this is the description of why",
+          "left" :"what",
+          "right":"home",
+          "mainmenu" :1,
+          "animation" : 32,
+          "data" : "why.json"
+      },
+
+      "with" : {
+          "id" : "whith",
+          "title" : "Why Ababool the JS Full Stack SPA",
+          "menutitle": "With",
+          "description": "this is the description of why",
+          "left" :"what",
+          "right":"home",
+          "mainmenu" :1,
+          "animation" : 32,
+          "data" : "why.json"
+      },
+
+      "start" : {
+          "id" : "start",
+          "title" : "Why Ababool the JS Full Stack SPA",
+          "menutitle": "Start",
+          "description": "this is the description of why",
+          "left" :"what",
+          "right":"home",
+          "mainmenu" :1,
+          "animation" : 32,
+          "data" : "why.json"
+      },
+
+      "license" : {
+          "id" : "license",
+          "title" : "Why Ababool the JS Full Stack SPA",
+          "menutitle": "License",
+          "description": "this is the description of why",
+          "footer": 1
+      },
+
+      "about" : {
+          "id" : "about",
+          "title" : "Why Ababool the JS Full Stack SPA",
+          "menutitle": "About",
+          "description": "this is the description of why",
+          "footer": 1
+      },
+
+      "contact" : {
+          "id" : "contact",
+          "title" : "Why Ababool the JS Full Stack SPA",
+          "menutitle": "Contact",
+          "description": "this is the description of why",
+          "footer": 1
+      },
+
+      "feedbacks" : {
+          "id" : "feedbacks",
+          "title" : "Why Ababool the JS Full Stack SPA",
+          "menutitle": "Feedbacks",
+          "description": "this is the description of why",
+          "footer": 1
       },
 
       "suscribe" : {
@@ -57,7 +123,7 @@
           "description": "this is the description of why",
           "left" :"what",
           "right":"home",
-          "mainmenu" :1,
+          "mainmenu" :0,
           "ajax" :1,
           "blocked" : 1,
           "footer":0,
@@ -72,7 +138,7 @@
           "left" :"what",
           "right":"home",
           "blocked" : 1,
-          "mainmenu" :1,
+          "mainmenu" :0,
           "footer":0,
           "animation" : 44
       },
@@ -85,7 +151,7 @@
           "down" : "home",
           "ajax" : 1,
           "reload" : 1,
-          "mainmenu" :1,
+          "mainmenu" :0,
           "footer":0,
           "animation" : 22,
           "data" : "ajax1.js"
