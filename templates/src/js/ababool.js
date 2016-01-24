@@ -120,7 +120,6 @@
 			$scope.animationout = '';
 			$scope.animationin = '';
 			$scope.main = angular.element(document.querySelector( '#pt-main' ));
-		//	$scope.backpage = '';
 
 			$scope.screenfull = function() {
 				if (screenfull.enabled) {
@@ -132,10 +131,9 @@
 			/* gotopage funtion */
 			$scope.gotopage = function(id, animation) {
 
-				// no id or same page return
 				if(id=='') return true;
 				if(id== $scope.current) return true;
-				if($scope.animationout!='') return true;
+				if($scope.animationout!='' || $scope.animationin!='') return true;
 
 				$scope.getTransition(animation);
 
@@ -164,6 +162,8 @@
 						return true;
 				}
 
+
+
 				$scope.animationout = $scope.current;
 				$scope.animationin = id;
 				$scope.current = id;
@@ -180,6 +180,10 @@
 			}
 
 			$scope.doOnEndPage = function(id) {
+				console.log(id);
+				$scope.animationin = '';
+				$scope.animationout = '';
+				$scope.$apply();
 				var pahtlocation = '';
 				var pahtlocationfull = pahtlocation +  id;
 				ga('send', 'pageview', pahtlocationfull);
@@ -188,15 +192,7 @@
 			}
 
 			$scope.endpage = function(id, event) {
-				// cuando termina la animacion ponemos la variable en blanco.
-				if($scope.animationout == id ) $scope.animationout = '';
-
-				if($scope.animationin == id ) {
-					$scope.animationin = '';
-					$scope.doOnEndPage(id);
-				}
-			//	$scope.hidecontainer = '';
-				$scope.$apply();
+				if($scope.animationin == id ) $scope.doOnEndPage(id);
 			}
 		});
 
