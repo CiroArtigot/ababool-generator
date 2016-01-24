@@ -19,21 +19,26 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    visibility: visible;
+    visibility: hidden;
     margin-top: 0;
     margin-bottom: 0;
     overflow: hidden;
     overflow-y: auto;
-    display: block;
-    z-index: 1;
-}
-
-.pt-currentout {
-    z-index: 9998;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    transform-style: preserve-3d;
 }
 .pt-current {
-    z-index: 9997;
-}
+      visibility: visible;
+      display: block;
+      z-index: 1;
+  }
 .clearfix:before,
 .clearfix:after {
     content: " ";

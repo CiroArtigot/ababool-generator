@@ -122,10 +122,7 @@
 			$scope.main = angular.element(document.querySelector( '#pt-main' ));
 		//	$scope.backpage = '';
 
-
-
 			$scope.screenfull = function() {
-
 				if (screenfull.enabled) {
 					if(screenfull.isFullscreen) screenfull.exit();
 	        else screenfull.request();
@@ -138,6 +135,7 @@
 				// no id or same page return
 				if(id=='') return true;
 				if(id== $scope.current) return true;
+				if($scope.animationout!='') return true;
 
 				$scope.getTransition(animation);
 
@@ -150,8 +148,6 @@
 
 				//if the page isn't loaded then look for it by AJAX
 				if(!ispage) {
-					//AJAX get request, send id
-					//to do:token and preloader
 					$http.post('ajax/?id=' + id + '&token=' + $scope.token).
 				    success(function(data, status, headers, config) {
 							$timeout(function(){
@@ -168,33 +164,19 @@
 						return true;
 				}
 
-			//	$scope.hidecontainer = $scope.current;
-			//	$timeout(function() {
-					$scope.animationout = $scope.current;
-					$scope.animationin = id;
-				//	$scope.backpage = $scope.current;
-					$scope.current = id;
-					$scope.thenavigator(id);
-				// }, 1000);
+				$scope.animationout = $scope.current;
+				$scope.animationin = id;
+				$scope.current = id;
+				$scope.thenavigator(id);
 				return true;
 			}
 
-			$scope.isvisible = function(id) {
-				if(id == $scope.current) return true;
-				if(id == $scope.animationin) return true;
-				return false;
-			}
-
-			$scope.viewcontainer = function(id) {
-				if(id == $scope.hidecontainer) return false;
-				if(id == $scope.current && $scope.animationin == '') return true;
-				return false;
-			}
-
 			$scope.theclass = function(id) {
-				if(id == $scope.animationout) return $scope.outeffect
-				if(id == $scope.animationin) return $scope.ineffect
-				return '';
+				var current = '';
+				if(id == $scope.current) current = 'pt-current ';
+				if(id == $scope.animationout) return 'pt-current ' + $scope.outeffect
+				if(id == $scope.animationin) return 'pt-current ' + $scope.ineffect
+				return current;
 			}
 
 			$scope.doOnEndPage = function(id) {
