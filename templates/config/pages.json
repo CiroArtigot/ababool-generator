@@ -5,15 +5,13 @@
       "home" : {
           "id" : "home",
           "default" : 1,
-          "title" : "Ababool the JS Full Stack SPA",
+          "title" : "Ababool MEAN Javascript Full Stack",
           "menutitle": "Ababool",
-          "description": "this is the description of home",
-          "left" :"why",
+          "description": "An open source, creative and smart MEAN Javascript Full-Stack Solution for dreaming Single Page Web Applications",
           "right":"what",
-          "up" : "ajax1",
+          "next" : "what",
           "mainmenu" :1,
-          "animation" : 17,
-          "data" : "home.js",
+          "animation" :6,
           "author" : "Ciro Artigot",
           "ogimage" : "images/ababool01.jpg",
           "ogtype" : "article",
@@ -22,18 +20,19 @@
 
       "what" : {
           "id" : "what",
-          "title" : "What Ababool the JS Full Stack SPA",
+          "title" : "Ababool: main Features and aspects",
           "menutitle": "What",
-          "description": "this is the description of what",
+          "description": "What is Ababool? Main Features and aspects: An open source, creative and smart MEAN Javascript Full-Stack Solution",
           "left" :"home",
-          "right":"why",
-          "up":"home",
-          "down": "why",
-          "next" : "why",
+          "right":"wow",
+          "next" : "wow",
           "prev" : "home",
           "mainmenu" :1,
-          "animation" : 38,
-          "data" : "comments.js"
+          "animation" : 7,
+          "author" : "Ciro Artigot",
+          "ogimage" : "images/ababool01.jpg",
+          "ogtype" : "article",
+          "twittercreator" : "@ciroartigot"
       },
 
       "wow" : {
@@ -72,6 +71,18 @@
           "data" : "why.json"
       },
 
+      "todo" : {
+          "id" : "todo",
+          "title" : "Why Ababool the JS Full Stack SPA",
+          "menutitle": "To Do",
+          "description": "this is the description of why",
+          "left" :"what",
+          "right":"home",
+          "mainmenu" :1,
+          "animation" : 32,
+          "data" : "why.json"
+      },
+
       "start" : {
           "id" : "start",
           "title" : "Why Ababool the JS Full Stack SPA",
@@ -89,6 +100,7 @@
           "title" : "Why Ababool the JS Full Stack SPA",
           "menutitle": "License",
           "description": "this is the description of why",
+          "animation" : 32,
           "footer": 1
       },
 
@@ -97,6 +109,7 @@
           "title" : "Why Ababool the JS Full Stack SPA",
           "menutitle": "About",
           "description": "this is the description of why",
+          "animation" : 32,
           "footer": 1
       },
 
@@ -105,6 +118,7 @@
           "title" : "Why Ababool the JS Full Stack SPA",
           "menutitle": "Contact",
           "description": "this is the description of why",
+          "animation" : 32,
           "footer": 1
       },
 
@@ -113,7 +127,56 @@
           "title" : "Why Ababool the JS Full Stack SPA",
           "menutitle": "Feedbacks",
           "description": "this is the description of why",
+          "animation" : 32,
+          "data" : "home.js",
           "footer": 1
+      },
+
+      "donate" : {
+          "id" : "donate",
+          "title" : "Why Ababool the JS Full Stack SPA",
+          "menutitle": "Donate",
+          "description": "this is the description of why",
+          "animation" : 32,
+          "footer": 1
+      },
+
+      "sitemap" : {
+          "id" : "sitemap",
+          "title" : "Why Ababool the JS Full Stack SPA",
+          "menutitle": "Site Map",
+          "description": "this is the description of why",
+          "animation" : 32,
+          "footer": 1
+      },
+
+      "transitions" : {
+          "id" : "transitions",
+          "title" : "We love the Ababool transitions",
+          "description": "Take a look to more than 60 different transitions to change a page with Ababool",
+          "animation" : 21
+      },
+
+      "transitions2" : {
+          "id" : "transitions2",
+          "title" : "We love the Ababool transitions",
+          "description": "Take a look to more than 60 different transitions to change a page with Ababool",
+          "animation" : 21
+      },
+
+      "map" : {
+          "id" : "map",
+          "title" : "Full Google Map Page",
+          "description": "Full Google Map Page",
+          "animation" : 21
+      },
+
+      "youtube" : {
+          "id" : "youtube",
+          "title" : "Full video page",
+          "description": "Full video page",
+          "animation" : 21,
+          "ajax" :1
       },
 
       "suscribe" : {
@@ -124,7 +187,7 @@
           "left" :"what",
           "right":"home",
           "mainmenu" :0,
-          "ajax" :1,
+          "ajax": 2,
           "blocked" : 1,
           "footer":0,
           "animation" : 22

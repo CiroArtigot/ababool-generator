@@ -4,6 +4,10 @@
 
 		app.controller('ababoolCtrl', function ($scope, $timeout, $http, $compile) {
 
+			/* preloader out */
+			$timeout(function() {
+						$scope.preloader = true;
+			}, 1000);
 
 			$scope.getTransition = function(animation) {
 
@@ -120,6 +124,7 @@
 			$scope.animationout = '';
 			$scope.animationin = '';
 			$scope.main = angular.element(document.querySelector( '#pt-main' ));
+			$scope.backpage = '';
 
 			$scope.screenfull = function() {
 				if (screenfull.enabled) {
@@ -146,11 +151,15 @@
 
 				//if the page isn't loaded then look for it by AJAX
 				if(!ispage) {
+
+					$scope.preloader = false;
+
 					$http.post('ajax/?id=' + id + '&token=' + $scope.token).
 				    success(function(data, status, headers, config) {
 							$timeout(function(){
 							  var template = data;
 								$scope.$apply(function() {
+									$scope.preloader = true;
 	                var content = $compile(template)($scope);
 	                $scope.main.append(content);
 								})
@@ -162,10 +171,9 @@
 						return true;
 				}
 
-
-
 				$scope.animationout = $scope.current;
 				$scope.animationin = id;
+				$scope.backpage = $scope.current;
 				$scope.current = id;
 				$scope.thenavigator(id);
 				return true;
@@ -180,9 +188,13 @@
 			}
 
 			$scope.doOnEndPage = function(id) {
-				console.log(id);
+			//	console.log(id);
 				$scope.animationin = '';
+				if($scope.animationout) $scope.doOnEndOldPage($scope.animationout);
 				$scope.animationout = '';
+
+				if(id=='map') initialize();
+
 				$scope.$apply();
 				var pahtlocation = '';
 				var pahtlocationfull = pahtlocation +  id;
@@ -191,7 +203,20 @@
 				return true;
 			}
 
+			$scope.doOnEndOldPage = function(id) {
+				if(id) {
+					var ajax = 0;
+					console.log(id);
+					var page = document.getElementById(id);
+					if(page.hasAttribute("data-ajax")) ajax = page.attributes['data-ajax'].value;
+					console.log(ajax);
+					if(ajax=='2') page.parentNode.removeChild(page);
+				}
+				return true;
+			}
+
 			$scope.endpage = function(id, event) {
+				//if($scope.animationout == id ) $scope.doOnEndOldPage(id);
 				if($scope.animationin == id ) $scope.doOnEndPage(id);
 			}
 		});

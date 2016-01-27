@@ -24,31 +24,21 @@ div#pt-main {
 
 .pt-page {
   padding-top: 70px;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  color: #fff;
 }
 
 #home {
-    background: url(../images/ababool01.jpg) no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    color: #fff;
+    background: url(../images/ababool03.jpg) no-repeat center center fixed;
 }
 #what {
-    background: url(../images/ababool02.jpg) no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    color: #fff;
+    background: url(../images/ababool01.jpg) no-repeat center center fixed;
 }
 #why {
-    background: url(../images/ababool03.jpg) no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    color: #fff;
+    background: url(../images/ababool02.jpg) no-repeat center center fixed;
 }
 
 #form {
@@ -59,17 +49,17 @@ div#pt-main {
 h1 {
     font-family: 'Open Sans Condensed', sans-serif;
     font-size: 85px;
-    line-height: 85px;
+    line-height: 88px;
     font-weight: 300;
     padding-bottom: 0;
     margin-bottom: 0;
-    margin-top: 36px;
+    margin-top: 15px;
 }
 
 h2 {
     font-family: 'Open Sans Condensed', sans-serif;
     font-size: 55px;
-    line-height: 55px;
+    line-height: 58px;
     font-weight: 300;
     margin-top: 5px;
     margin-bottom: 30px;
@@ -78,7 +68,7 @@ h2 {
 h3 {
     font-family: 'Open Sans Condensed', sans-serif;
     font-size: 45px;
-    line-height: 45px;
+    line-height: 48px;
     font-weight: 300;
     margin-top: 5px;
     margin-bottom: 20px;
@@ -86,11 +76,15 @@ h3 {
 
 h4 {
     font-family: 'Open Sans Condensed', sans-serif;
-    font-size: 35px;
-    line-height: 35px;
-    font-weight: 300;
-    margin-top: 15px;
-    margin-bottom: 15px;
+    font-size: 29px;
+    line-height: 34px;
+    font-weight: 500;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+p {
+    margin-bottom: 5px;
 }
 
 span.link{
@@ -105,8 +99,18 @@ span.link:hover{
   padding-bottom: 60px;
 }
 .box2 {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  color: #000;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    color: #000;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.darkbox{
+  color: #fff;
+}
+
+ul.list-group.list-group-black {
+    color: #000;
 }
