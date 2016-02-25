@@ -1,13 +1,18 @@
 {
   "name": "ababool-generator",
   "description": "Ababool application generator",
-  "version": "1.8.3",
+  "version": "1.8.4",
   "author": "Ciro Artigot <ciro.artigot@gmail.com>",
   "contributors": [
   ],
   "keywords": [
-    "ababool",
-    "ababoolgenerator"
+    "MEAN",
+    "Full Stack",
+    "nodeJS",
+    "angularJS",
+    "RESTful",
+    "AMP",
+    "mongodb"
   ],
   "repository": "ciroartigot/ababool-generator",
   "license": "MIT",
