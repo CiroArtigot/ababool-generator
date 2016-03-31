@@ -2,7 +2,7 @@ doctype xml
 rss(version="2.0", xmlns:atom="http://www.w3.org/2005/Atom")
     channel
         title #{config['general'].sitename}
-        link <a href="#{config['general'].domain}" rel="nofollow">#{config['general'].domain}</a>
+        link #{config['general'].domain}
         atom:link(
           rel="self",
           type="application/rss+xml",
@@ -14,11 +14,11 @@ rss(version="2.0", xmlns:atom="http://www.w3.org/2005/Atom")
         each post in posts
             item
                 title= post.title
-                link <a href="#{config['general'].domain + post.slug}" rel="nofollow">#{config['general'].domain + post.slug}</a>
+                link #{config['general'].domain + post.slug}
                 description
                     | <![CDATA[
                     | !{post.teaser}
                     | <a href="#{config['general'].domain + post.slug}" rel="nofollow">Read more</a>
                     | ]]>
                 pubDate= new Date(post.publishedAt).toUTCString()
-                guid(isPermaLink='false') <a href="#{ config['general'].domain + post.slug}" rel="nofollow">#{config['general'].domain + post.slug}</a>
+                guid(isPermaLink='false') #{config['general'].domain + post.slug}
